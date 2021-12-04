@@ -1,0 +1,11 @@
+.simple-keyboard.myTheme1 .hg-button:hover {
+    font-size: 150%;
+    background: #8fa2c3;
+    color: white;
+  }
+  
+  .simple-keyboard.myTheme1 .hg-button:active {
+    background: #1c4995;
+    color: white;
+  }
+
