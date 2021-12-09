@@ -2,38 +2,69 @@ import React, {Component} from 'react';
 import words from './para.js'
 
 
-class KeyBoard extends Component {
-    render() {
-        function choose_words(){
-            const list_of_words = Array(words);
-            let choosen_words_paragraph = " ";
-            let choosen_words_array = [];
+class Paragraph extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { index: 0 , words_returned: ''};
+    }
 
-            for (let i = 0; i < 20; i++) {
-                let element = Math.floor(Math.random()*1000)
-                choosen_words_array.push(list_of_words[0][element]+ " ") ;
+    SpaceKeyPressed = (e) => {
+            if (e.key===' '){
+                this.setState({ index: this.state.index+1 });
+                document.getElementById("input_section").value = ''
 
             }
-            return choosen_words_array
+
+    }
+     choose_words = () => {
+        const list_of_words = Array(words);
+        let choosen_words_paragraph = " ";
+        let choosen_words_array = [];
+
+        for (let i = 0; i < 20; i++) {
+            let element = Math.floor(Math.random()*1000)
+            choosen_words_array.push(list_of_words[0][element]+ " ") ;
+
         }
-        let words_returned = choose_words()
+        return choosen_words_array
+    }
+    InputChange = input => {
+        document.getElementById("keyboard").innerHTML = `Last Key: ${input.toUpperCase()}`;
+      };
+
+    words_returned = this.choose_words()
+
+    render() {
+
         return (
             <>
                 <div>
                     <p style={{border: '1px solid', fontSize: '40px'}} > 
-                    {words_returned}
+                    {this.words_returned}
                     </p>
                 </div>
-                <div style={{ display: 'flex',justifyContent: 'center' }}>
-                    
-                    <h1 style={{ border: '1px solid', margin: '20px',padding: '10px' }}> Previous word</h1>
-                    <h1 style={{border: '1px solid', margin: '20px' ,padding: '10px' }}> {words_returned[0]}</h1>
-                    <h1 style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> {words_returned[1]}</h1>
+                <div style={{ display: 'flex',justifyContent: 'center' }} >
+                    <h1 style={{ border: '1px solid', margin: '20px',padding: '10px' }} > {this.words_returned[this.state.index-1]}</h1>
+                    <h1 style={{border: '1px solid', margin: '20px' ,padding: '10px' }} > {this.words_returned[this.state.index]}</h1>
+                    <h1 style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> {this.words_returned[this.state.index+1]}</h1>
+                    <button style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> Restart</button> 
                 </div>
-                
+                <input  
+                    onChange={ (e) => this.InputChange(e.nativeEvent.data)} 
+                    onKeyPress={ (e) => this.SpaceKeyPressed(e.nativeEvent)} 
+                    id= 'input_section'
+                    style={{
+                    border: '10px solid',
+                    paddingBottom: '5%',
+                    margin: '0px',
+                    width:'98.2%',
+                    height:'50%',
+                    fontSize: '25px'
+                    }}
+                />
             </>
         )
     }
 }
 
-export default KeyBoard;
+export default Paragraph;
