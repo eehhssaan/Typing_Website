@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Keyboard from 'react-simple-keyboard';
 import 'react-simple-keyboard/build/css/index.css';
-import Paragraph from './Paragraph.js'
 
 class KeyBoard extends Component {
   commonKeyboardOptions = {
@@ -9,8 +8,6 @@ class KeyBoard extends Component {
     physicalKeyboardHighlightTextColor: "red",
     physicalKeyboardHighlightBgColor: "#9ab4d0"
   };
-
-
   
     render(){
       return (
