@@ -137,4 +137,13 @@ const words = ['of', 'to', 'and', 'a', 'in', 'is', 'it', 'you', 'that', 'he','wa
 'motion', 'path', 'liquid', 'log', 'meant', 'quotient', 'teeth',
 'shell', 'neck']
 
-export default words;
+let words_returned = []
+const list_of_words = Array(words);
+
+for (let i = 0; i < 20; i++) {
+    let element = Math.floor(Math.random()*1000)
+    words_returned.push(list_of_words[0][element]+ " ")
+}
+
+
+export default words_returned;
