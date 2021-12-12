@@ -9,7 +9,7 @@ class WordsChecker extends Component {
            <div style={{margin: '5%', justifyContent: 'center',  alignItems: 'center', textAlign: 'center'}}>
                <h1 style={{border: '1px solid', padding: '10%'}}> Streak: 100</h1>
                <h1 style={{border: '1px solid', padding: '10%'}}> WPM: 100</h1>
-               <h1 style={{border: '1px solid', padding: '10%'}}> Accuracy: 100%</h1>
+               <h1 style={{border: '1px solid', padding: '10%'}}> Accuracy: {this.context.wordAccuracy}%</h1>
                <h1 style={{border: '1px solid', padding: '10%'}}> Words: {this.context.SpaceKeyCounter}</h1>
            </div>
        )

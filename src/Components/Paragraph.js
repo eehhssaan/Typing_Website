@@ -6,15 +6,19 @@ class Paragraph extends Component {
     
     SpaceKeyPressed = (e) => {
             if (e.key===' '){
-                document.getElementById("input_section").value = ''
-                // this.context.SpaceKeyCounter = this.context.SpaceKeyCounter + 1
+
                 this.context.wordCounter(e)
                 this.context.wordIndex(e)
+                if (document.getElementById("input_section").value.trim() ===this.context.wordsReturned[this.context.wordIndexCounter].trim()){
+                    this.context.CorrectWords()
+                }
+                document.getElementById("input_section").value = ''
             }
     }
 
     InputChange = input => {
         document.getElementById("keyboard").innerHTML = `Last Key: ${input.toUpperCase()}`;
+        this.context.AccuracyCalculator()
       };
 
     render() {
@@ -22,13 +26,15 @@ class Paragraph extends Component {
             <>
                 <div>
                     <p style={{border: '1px solid', fontSize: '40px'}} > 
-                    {this.context.words_returned}
+                    {this.context.wordsReturned}
                     </p>
                 </div>
                 <div style={{ display: 'flex',justifyContent: 'center' }} >
-                    <h1 style={{ border: '1px solid', margin: '20px',padding: '10px' }} > {this.context.words_returned[this.context.wordIndexCounter - 1]}</h1>
-                    <h1 style={{border: '1px solid', margin: '20px' ,padding: '10px' }} > {this.context.words_returned[this.context.wordIndexCounter]}</h1>
-                    <h1 style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> {this.context.words_returned[this.context.wordIndexCounter+1]}</h1>
+                    <h1 style={{ border: '1px solid', margin: '20px',padding: '10px' }} > {this.context.wordsReturned[this.context.wordIndexCounter - 1]}</h1>
+                    <h1 style={{border: '1px solid', margin: '20px' ,padding: '10px' }} > {this.context.wordsReturned[this.context.wordIndexCounter]}</h1>
+                    <h1 style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> {this.context.wordsReturned[this.context.wordIndexCounter+1]}</h1>
+                    <h1 style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> Time</h1>
+
                     <button style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> Restart</button> 
                 </div>
                 <input  
