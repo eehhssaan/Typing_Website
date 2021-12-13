@@ -1,0 +1,87 @@
+:root {
+	--primary: rgb(230,230,230);
+	--secondary: #171717;
+	--accent: #009688;
+}
+
+:root[data-dark-mode="true"] {
+	--primary: #171717;
+	--secondary: rgb(230,230,230);
+	--accent: #89e2cb;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--primary: #171717;
+		--secondary: rgb(230,230,230);
+		--accent: #89e2cb;
+	}
+}
+
+.dark-mode__btn {
+	border: none;
+	background-color: var(--secondary);
+	color: var(--primary);
+	font-size: 3vmin;
+	font-family: "Inconsolata", monospace;
+	cursor: pointer;
+}
+
+/* needed to easily vertically align button content since some browsers won't let a button be a flex container */
+.dark-mode__content-wrap {
+	display: flex;
+	align-items: center;
+	padding: 0.5em 0.75em;
+}
+
+.dark-mode__icon {
+	--sz: 1em;
+	display: inline-block;
+	width: var(--sz);
+	height: var(--sz);
+	margin-right: 0.75em;
+	background-image: linear-gradient(
+		to right,
+		var(--primary) 50%,
+		var(--secondary) 50%
+	);
+	border-radius: 50%;
+	box-shadow: 0 0 0 0.1em var(--secondary), 0 0 0 0.2em var(--primary);
+}
+
+.dark-mode__status {
+	display: inline-block;
+	margin-left: 1ch;
+	/*  prevents reflow when switching between on and off */
+	min-width: 3ch;
+	text-align: left;
+}
+
+.dark-mode__btn:focus {
+	outline-color: var(--accent);
+}
+
+/* layout and page styles */
+html,
+body,
+#app {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+    color: var(--secondary);
+
+}
+
+#app {
+	background-color: var(--primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#input_section{
+    color: var(--secondary);
+
+}

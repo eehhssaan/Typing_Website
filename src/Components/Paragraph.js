@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {SpaceContext} from '../Context/SpaceContext';
 import Timer from './Timer';
+import './Toggle/Toggle';
+
 
 class Paragraph extends Component {
     static contextType = SpaceContext
@@ -37,7 +39,7 @@ class Paragraph extends Component {
                     <h1 style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> {this.context.wordsReturned[this.context.wordIndexCounter+1]}</h1>
                     <h1 style={{ border: '1px solid', margin: '20px' ,padding: '10px' }} id="timer"> <Timer/></h1>
 
-                    <button style={{ border: '1px solid', margin: '20px' ,padding: '10px' }}> Restart</button> 
+                    <button style={{ border: '1px solid', margin: '20px' ,padding: '10px', backgroundColor: 'Transparent'}}> Restart</button> 
                 </div>
                 <input  
                     onChange={ (e) => this.InputChange(e.nativeEvent.data)} 
@@ -48,7 +50,8 @@ class Paragraph extends Component {
                     paddingBottom: '5%',
                     margin: '0px',
                     width:'98.2%',
-                    fontSize: '25px'
+                    fontSize: '25px',
+                    backgroundColor: 'Transparent'
                     }}
                 />
             </>
