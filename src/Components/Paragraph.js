@@ -29,7 +29,7 @@ class Paragraph extends Component {
         return (
             <>
                 <div>
-                    <p style={{border: '1px solid', fontSize: '40px'}} > 
+                    <p style={{border: '1px solid', fontSize: '30px', padding: '10px',marginBottom: '0'}} > 
                     {this.context.wordsReturned}
                     </p>
                 </div>
@@ -41,19 +41,19 @@ class Paragraph extends Component {
 
                     <button style={{ border: '1px solid', margin: '20px' ,padding: '10px', backgroundColor: 'Transparent'}}> Restart</button> 
                 </div>
-                <input  
+               <div style={{padding: '10px',marginBottom: '0', height: '60px'}}>
+               <input  
                     onChange={ (e) => this.InputChange(e.nativeEvent.data)} 
                     onKeyPress={ (e) => this.AnyKeyPressed(e.nativeEvent)} 
                     id= 'input_section'
                     style={{
-                    border: '10px solid',
-                    paddingBottom: '5%',
-                    margin: '0px',
-                    width:'98.2%',
-                    fontSize: '25px',
-                    backgroundColor: 'Transparent'
+                    border: '1px solid',
+                    width: '100%',
+                    height:'100%',
+                    backgroundColor: 'Transparent',
                     }}
                 />
+                </div>
             </>
         )
     }

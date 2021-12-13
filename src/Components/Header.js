@@ -9,10 +9,10 @@ class Navbar extends Component{
             alignItems: 'center',
             margin: '0px',
             border: '10px solid',
-            padding: '50px',
+            padding: '40px',
         }
         return (
-            <div style={{ display: 'flex: 0 0 100%'}}>
+            <div style={{ display: 'flex'}}>
                 <h1 style={headerStyle}> This is the Navbar <DarkModeToggle/></h1>
             </div>
         )
