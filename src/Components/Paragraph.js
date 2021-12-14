@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {SpaceContext} from '../Context/SpaceContext';
 import Timer from './Timer';
 import './Toggle/Toggle';
+import $ from "jquery";
+
+
+import './Paragraph.css';
 
 
 class Paragraph extends Component {
@@ -29,12 +33,15 @@ class Paragraph extends Component {
         let height = parseInt(style.getPropertyValue("height"));
         let font_size = parseInt(style.getPropertyValue("font-size"));
         let line_height = parseInt(style.getPropertyValue("line-height"));
-        let box_sizing = style.getPropertyValue("box-sizing"); 
         if(isNaN(line_height)) line_height = font_size * 1.2;
 
         console.log(height,line_height)
         let lines = Math.ceil(height / line_height);
         alert("Lines: " + lines);
+
+        var content = $('#paragraph').html();
+        var arr = content.split('<h4>');
+        console.log(arr[0]);
         return lines;
     };
 
@@ -42,8 +49,18 @@ class Paragraph extends Component {
         return (
             <>
                 <div onLoad={console.log('LOADED')} onClick={ (e) => this.countLines(e)} >
-                    <div style={{border: '1px solid', fontSize: '30px', padding: '10px',marginBottom: '0', lineHeight: '1'}} id="paragraph"  onLoad ={ () => this.countLines()}> 
-                    {this.context.wordsReturned}
+                    <div style={{
+                        border: '1px solid',
+                        fontSize: '30px', 
+                        padding: '10px',
+                        marginBottom: '0', 
+                        lineHeight: '1', 
+                        firstLine: '100px',
+                        }} 
+                            id="paragraph"  
+                            onLoad = {() => this.countLines()}
+                    > 
+                        {this.context.wordsReturned}
                     </div>
                 </div>
                 <div style={{ display: 'flex',justifyContent: 'center' }} >
