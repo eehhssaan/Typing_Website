@@ -1,5 +1,5 @@
 import {Component, createContext} from 'react'
-import wordsReturned from '../Components/para.js'
+import wordsReturned, {addMoreWord} from '../Components/para.js'
 
 export const SpaceContext = createContext();
 
@@ -14,21 +14,21 @@ export class SpaceKeyProvider extends Component {
             wordAccuracy:0,
             TotalKeys:0,
             WordPerMinute:0,
-            streak: 0
+            streak: 0,
+            currentLine:[],
+            nextLine: [],
         }
     }
     WordPerMinuteCalculator = (e) => { 
         this.setState({TotalKeys:this.state.TotalKeys + 1})
         this.setState({WordPerMinute: Math.round((this.state.TotalKeys/5)/1)})
     }
+    addWord= (e)=>{
+        addMoreWord()
 
-
-
-
+    }
     AccuracyCalculator = (e) => {
         if ( this.state.CorrectWordsCounter>0 && this.state.SpaceKeyCounter> 0){
-            console.log(this.state.CorrectWordsCounter)
-
             this.setState({ wordAccuracy: Math.round((this.state.CorrectWordsCounter/this.state.SpaceKeyCounter) *100)})
         }
     }
@@ -61,6 +61,7 @@ export class SpaceKeyProvider extends Component {
                 CorrectWords: this.CorrectWords,
                 AccuracyCalculator: this.AccuracyCalculator,
                 WordPerMinuteCalculator: this.WordPerMinuteCalculator,
+                addWord : this.addWord,
                 }}>
                 {this.props.children}
             </SpaceContext.Provider>

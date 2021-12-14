@@ -140,7 +140,13 @@ const words = ['of', 'to', 'and', 'a', 'in', 'is', 'it', 'you', 'that', 'he','wa
 let wordsReturned = []
 const list_of_words = Array(words);
 
-for (let i = 0; i < 20; i++) {
+
+for (let i = 0; i < 30; i++) {
+    let element = Math.floor(Math.random()*1000)
+    wordsReturned.push(list_of_words[0][element]+ " ")
+}
+
+export function addMoreWord(){
     let element = Math.floor(Math.random()*1000)
     wordsReturned.push(list_of_words[0][element]+ " ")
 }
